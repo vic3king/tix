@@ -1,37 +1,24 @@
-# Adonis fullstack application
+# Tix
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+Is an api built for a ticketing application similar to tix.africa
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+This project is built on [AdonisJs](http://adonisjs.com/) AdonisJs is a Node.js web framework with a breath of fresh air and drizzle of elegant syntax on top of it. We prefer developer joy and stability over anything else..
+
 
 ## Setup
 
-Use the adonis command to install the blueprint
+```bash
+- git clone https://github.com/vic3king/tix.git
+- cd tix && npn install
+- create a .env file usiong details provided in the .env.example 
+- after that run npm run db:refresh to run migrate and npm run seed 
+- npm run start:dev to launch development server and access endpoints to e.g [localhost:3000/v1](http://127.0.0.1:3000)
+```
 
 ```bash
-adonis new yardstick
+Hosted api can be found here https://tix-tix.herokuapp.com/v1
 ```
 
-or manually clone the repo and then run `npm install`.
-
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
-
-
-https://tix-tix.herokuapp.com/v1
 ## API Endpoints
 <table>
   <tr>
@@ -41,52 +28,50 @@ https://tix-tix.herokuapp.com/v1
   </tr>
     <tr>
       <td>POST</td>
-      <td>/api/user/create/</td>
-      <td>Register a User</td>
+      <td>/</td>
+      <td>Welcome screen</td>
   </tr>
   <tr>
     <td>POST</td>
-    <td>/api/user/login/</td>
+    <td>/v1/auth/login/</td>
     <td>Login a user</td>
   </tr>
-  <tr>
-    <td>GET</td>
-    <td>/api/category/categories/</td>
-    <td>Get all categories</td>
+   <tr>
+    <td>POST</td>
+    <td>/v1/auth/register/</td>
+    <td>Register a user</td>
   </tr>
   <tr>
     <td>POST</td>
-    <td>/api/category/categories/</td>
-    <td>Create a new category</td>
+    <td>/v1/events/event/</td>
+    <td>Create a new event</td>
   </tr>
-  <tr>
-    <td>POST</td>
-    <td>/api/favorite/favorites/</td>
-    <td>Create a favorite thing</td>
-  </tr>
-  <tr>
+   <tr>
     <td>GET</td>
-    <td>/api/favorite/favorites/</td>
-    <td>Get all favorite things</td>
+    <td>/v1/events</td>
+    <td>Get all events</td>
   </tr>
-  <tr>
-    <td>GET</td>
-    <td>/api/favorite/favorites/{int:id}</td>
-    <td>Get the details of a favorite thing</td>
+   <tr>
+    <td>PATCH</td>
+    <td>/v1/events/:eventId</td>
+    <td>Update properties of an event</td>
   </tr>
-  <tr>
-    <td>GET</td>
-    <td>/api/favorite/favorites/?category_id={int: categoryId}</td>
-    <td>Get all favorite thing in category</td>
+   <tr>
+    <td>DELETE</td>
+    <td>/v1/events/:eventId</td>
+    <td>Delete an event and associated tickets</td>
   </tr>
-  <tr>
-    <td>PUT</td>
-    <td>/api/favorite/favorites/{int:id}</td>
-    <td>Update a favorite thing</td>
-  </tr>
-  <tr>
-    <td>GET</td>
-    <td>/api/favorite/history/</td>
-    <td>Get audit log for user</td>
+   <tr>
+    <td>PATCH</td>
+    <td>/v1/tickets/:eventId</td>
+    <td>Create a ticket for an event</td>
   </tr>
 </table>
+
+## Entity Realtionship diagram
+
+
+
+## Authors
+
+* **Akaniru victory** - *Initial work* - [Vic3king](https://github.com/vic3king)

@@ -25,7 +25,7 @@ class Event extends Model {
   }
 
   tickets() {
-    return this.hasMany('App/Models/Ticket', 'id', 'ticketId');
+    return this.hasMany('App/Models/Ticket', 'id', 'eventId');
   }
 }
 

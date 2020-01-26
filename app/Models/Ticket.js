@@ -19,9 +19,9 @@ class Ticket extends Model {
     return false;
   }
 
-  event() {
-    return this.belongsTo('App/Models/Event', 'ticketId', 'id');
-  }
+  // event() {
+  //   return this.belongsTo('App/Models/Event', 'ticketId', 'id');
+  // }
 }
 
 module.exports = Ticket;

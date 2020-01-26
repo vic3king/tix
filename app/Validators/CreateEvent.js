@@ -10,7 +10,7 @@ class CreateEvent extends Validator {
       location: 'required',
       startTime: 'required',
       endTime: `required`,
-      startDate: `required|date|after_offset_of:1,seconds`,
+      startDate: `date|after:${new Date()}`,
       endDate: 'required|date',
     };
   }

@@ -59,6 +59,63 @@ class EventController {
       },
     });
   }
+
+  async update({ request, params, response }) {
+    const userInput = request.only([
+      'eventDetails',
+      'location',
+      'startTime',
+      'endTime',
+      'startDate',
+      'endDate',
+      'socialHandle',
+      'website',
+      'avatar',
+    ]);
+
+    const event = await Event.findOrFail(params.eventId);
+
+    Object.keys(userInput).forEach(key => {
+      event[key] = userInput[key];
+    });
+
+    await event.save();
+
+    return response.status(200).json({
+      status: 'success',
+      message: 'Event details updated successfully',
+      event,
+    });
+  }
+
+  // const eventID = params.id // event's id to be deleted
+  // const userID = auth.user.id // logged user's ID
+
+  // // looking for the event
+  // const event = await Event.query()
+  //   .where({
+  //     id: eventID,
+  //     user_id: userID
+
+  async delete({ request, params, response }) {
+    const event = await Event.findBy({ id: params.eventId });
+
+    if (!event) {
+      return response.status(404).json({
+        status: 'error',
+        message: 'Event not found',
+      });
+    }
+
+    console.log(event.tickets(), '>>>>>>>');
+    await event.tickets().delete();
+    await event.delete();
+
+    return response.status(200).json({
+      status: 'success',
+      message: 'Event deleted successfully',
+    });
+  }
 }
 
 module.exports = EventController;

@@ -14,7 +14,7 @@ class ValidateTicketType {
     // call next to advance the request
     const { type } = request.all();
 
-    if (type === 'free' && type > 0) {
+    if (type && type === 'free' && type > 0) {
       return response.status(400).json({
         status: 'error',
         message: 'Free tickets should have 0 as ticket amount',

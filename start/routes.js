@@ -35,7 +35,17 @@ Route.group(() => {
   Route.post('event', 'EventController.create')
     .validator('CreateEvent')
     .middleware('auth');
+
   Route.get('/', 'EventController.getAll').middleware('auth');
+
+  Route.patch('/:eventId', 'EventController.update')
+    .middleware(['auth', 'VerifyEventOwner', 'ValidateTicketType'])
+    .validator('UpdateEvent');
+
+  Route.delete('/:eventId', 'EventController.delete').middleware([
+    'auth',
+    'VerifyEventOwner',
+  ]);
 }).prefix('v1/events');
 
 // Transactions
