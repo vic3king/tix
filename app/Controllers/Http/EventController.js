@@ -40,6 +40,29 @@ class EventController {
     };
   }
 
+  async getOne({ request, params, response }) {
+    const { page = 1, per_page = 10 } = request.all();
+
+    const event = await Event.query()
+      .where('id', params.eventId)
+      .with('tickets')
+      .paginate(page, per_page);
+    const { rows, ...meta } = event;
+
+    return response.status(200).json({
+      status: 'success',
+      data: {
+        event: rows,
+        meta: {
+          totalItems: meta.pages.total,
+          itemsPerPage: meta.pages.perPage,
+          currentPage: meta.pages.page,
+          totalPages: meta.pages.lastPage,
+        },
+      },
+    });
+  }
+
   async getAll({ request, response }) {
     const { page = 1, per_page = 10 } = request.all();
 
@@ -49,7 +72,7 @@ class EventController {
     return response.status(200).json({
       status: 'success',
       data: {
-        categories: rows,
+        events: rows,
         meta: {
           totalItems: meta.pages.total,
           itemsPerPage: meta.pages.perPage,

@@ -15,9 +15,8 @@ This project is built on [AdonisJs](http://adonisjs.com/) AdonisJs is a Node.js 
 - npm run start:dev to launch development server and access endpoints to e.g [localhost:3000/v1](http://127.0.0.1:3000)
 ```
 
-```bash
-Hosted api can be found here https://tix-tix.herokuapp.com/v1
-```
+Hosted api can be found [here](https://tix-tix.herokuapp.com/v1)
+
 
 ## API Endpoints
 <table>
@@ -52,6 +51,11 @@ Hosted api can be found here https://tix-tix.herokuapp.com/v1
     <td>Get all events</td>
   </tr>
    <tr>
+    <td>GET</td>
+    <td>/v1/events/:eventId</td>
+    <td>Get one event and associated tickets</td>
+  </tr>
+   <tr>
     <td>PATCH</td>
     <td>/v1/events/:eventId</td>
     <td>Update properties of an event</td>
@@ -70,8 +74,8 @@ Hosted api can be found here https://tix-tix.herokuapp.com/v1
 
 ## Entity Realtionship diagram
 
-
+![enentity relationship diagram](https://github.com/vic3king/tix/blob/master/Screenshot%202020-01-26%20at%2006.06.44.png)
 
 ## Authors
 
-* **Akaniru victory** - *Initial work* - [Vic3king](https://github.com/vic3king)
+* **Akaniru victory** - *Initial work* - [Vic3king](http://www.vic3king.io)

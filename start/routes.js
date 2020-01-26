@@ -38,6 +38,8 @@ Route.group(() => {
 
   Route.get('/', 'EventController.getAll').middleware('auth');
 
+  Route.get('/:eventId', 'EventController.getOne').middleware('auth');
+
   Route.patch('/:eventId', 'EventController.update')
     .middleware(['auth', 'VerifyEventOwner', 'ValidateTicketType'])
     .validator('UpdateEvent');
