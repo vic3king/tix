@@ -18,6 +18,7 @@ class EventSeeder {
   async run() {
     await Event.createMany([
       {
+        id: '19c8c94e-0fc1-4619-9f7b-d985b41e84f1',
         userId: '65e7e858-2e71-45ef-8076-233a1cc31166',
         title: 'Test',
         eventDetails: 'details of event here',

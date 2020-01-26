@@ -9,8 +9,8 @@ class CreateEvent extends Validator {
       eventDetails: 'required',
       location: 'required',
       startTime: 'required',
-      endTime: 'required',
-      startDate: 'required|date',
+      endTime: `required`,
+      startDate: `required|date|after_offset_of:1,seconds`,
       endDate: 'required|date',
     };
   }
@@ -25,7 +25,8 @@ class CreateEvent extends Validator {
       'endTime.required': 'endTime of event is required',
       'startDate.required': 'startDate of event is required',
       'startDate.date':
-        'Start Date of event should be a valid date (MM-DD-YYYY).',
+        'Start Date of event should be a valid date e.g (MM-DD-YYYY).',
+      'startDate.after': 'Event startDate must be after current day',
       'endDate.required': 'endDate of event is required',
       'endDate.date': 'End Date of event should be a valid date (MM-DD-YYYY).',
     };

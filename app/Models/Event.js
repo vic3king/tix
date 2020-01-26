@@ -23,6 +23,10 @@ class Event extends Model {
   user() {
     return this.belongsTo('App/Models/User', 'userId', 'id');
   }
+
+  tickets() {
+    return this.hasMany('App/Models/Ticket', 'id', 'ticketId');
+  }
 }
 
 module.exports = Event;

@@ -30,10 +30,17 @@ Route.group(() => {
   Route.post('auth/login', 'AuthController.login').validator('UserLogin');
 }).prefix('v1');
 
+// Events
 Route.group(() => {
-  // Events
   Route.post('event', 'EventController.create')
     .validator('CreateEvent')
     .middleware('auth');
   Route.get('/', 'EventController.getAll').middleware('auth');
 }).prefix('v1/events');
+
+// Transactions
+Route.group(() => {
+  Route.post('/:eventId', 'TicketController.create')
+    .validator('CreateTicket')
+    .middleware(['auth', 'VerifyEventOwner', 'ValidateTicketType']);
+}).prefix('v1/tickets');

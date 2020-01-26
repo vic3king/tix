@@ -41,6 +41,8 @@ const globalMiddleware = [
 const namedMiddleware = {
   auth: 'Adonis/Middleware/Auth',
   guest: 'Adonis/Middleware/AllowGuestOnly',
+  VerifyEventOwner: 'App/Middleware/VerifyEventOwner',
+  ValidateTicketType: 'App/Middleware/ValidateTicketType',
 };
 
 /*

@@ -16,10 +16,7 @@ class EventsSchema extends Schema {
         .references('id')
         .inTable('users');
       table.string('title', 254);
-      table
-        .string('eventDetails', 254)
-        .notNullable()
-        .unique();
+      table.string('eventDetails', 254).notNullable();
       table.string('location', 254).notNullable();
       table.date('startTime').notNullable();
       table.date('endTime').notNullable();
